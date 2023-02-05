@@ -1,19 +1,17 @@
 import sys
 import random
-from PyQt5 import QtWidgets, QtCore,QtGui
-import PyQt5
+from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-from v5_4 import Ui_MainWindow
 
 import pandas as pd
 from utils import *
 
+MyWindow, base_class = uic.loadUiType('./v5_4.ui')
 
-class Program(QtWidgets.QMainWindow):
-
-    def __init__(self):
-        super(Program, self).__init__()
-        self.ui = Ui_MainWindow()
+class MainWindow(base_class):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.ui = MyWindow()
         self.ui.setupUi(self)
         self.init_UI()
 
@@ -149,8 +147,6 @@ class Program(QtWidgets.QMainWindow):
         else:
             self.gm1 = btn.objectName()
 
-        print(self.gm1)
-        print(self.gm2)
 
     def generate_round(self):
         #choosing random question and 4 answers
@@ -188,10 +184,8 @@ class Program(QtWidgets.QMainWindow):
         # questions = []
         # answers = []
         for region in self.selected_regions:
-            region_list = pd.read_excel(
-                fr'C:\Users\cambo\Documents\repos\python\pyqt\geography game\{region}.xlsx',
+            region_list = pd.read_excel(f'./regions/{region}.xlsx',
                 sheet_name=self.language_selected)
-
             info.update(
                 dict(
                     zip(list(region_list.iloc[:, 0]),
@@ -204,13 +198,12 @@ class Program(QtWidgets.QMainWindow):
             info = {y: x for x, y in info.items()}
             questions, answers = answers, questions
 
-        print(len(info))
+        
         print(info)
         return info, questions, answers
 
-
-app = QtWidgets.QApplication(sys.argv)
-MainWindow = QtWidgets.QMainWindow()
-application = Program()
-application.show()
-sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    mw = MainWindow()
+    mw.show()
+    sys.exit(app.exec_())
