@@ -2,7 +2,6 @@ import sys
 import random
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-
 import pandas as pd
 from utils import *
 
@@ -25,7 +24,6 @@ class MainWindow(base_class):
     def init_UI(self):
 
         self.setWindowTitle('Geography game')
-        # self.setWindowIcon(QtGui.QIcon('./heart.png'))
 
         #setup for message about wrong answer
         self.ui.msg = QMessageBox()

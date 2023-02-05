@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>580</width>
+    <width>626</width>
     <height>550</height>
    </rect>
   </property>
@@ -52,6 +52,19 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>Roboto Thin</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Pre-alpha</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QStackedWidget" name="Game_stage_StackedWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -72,7 +85,7 @@
        <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="start_and_win_page">
        <property name="sizePolicy">
@@ -284,13 +297,22 @@
               </item>
               <item>
                <widget class="QCheckBox" name="Reg_3_box">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Region 3</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QCheckBox" name="Reg_4_box">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Region 4</string>
                 </property>
@@ -350,6 +372,9 @@
               </item>
               <item>
                <widget class="QRadioButton" name="Flag_Cou">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Flag - Country</string>
                 </property>
@@ -357,6 +382,9 @@
               </item>
               <item>
                <widget class="QRadioButton" name="Cou_Flag">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Country - Flag</string>
                 </property>
